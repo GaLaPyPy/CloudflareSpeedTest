@@ -1,0 +1,57 @@
+https://github.com/XIU2/CloudflareSpeedTest/discussions/61
+在 Android 手机上运行 CloudflareST 的简单教程~ #61
+XIU2 started this conversation in 秀儿
+在 Android 手机上运行 CloudflareST 的简单教程~
+#61
+@XIU2
+XIU2
+on 6 Feb · 14 comments
+Return to top
+@XIU2
+XIU2
+on 6 Feb
+Maintainer
+想要在 Android 手机上运行 CloudflareST，则需要安装一个 Linux 虚拟机，以下教程以 Termux 为例。
+
+不用担心，只需要安装 APP 就行了，不需要什么复杂的操作。
+
+# 安装 Termux
+蓝奏云：https://xiu.lanzous.com/iFWIHle7z7e
+下载后安装到你的手机上，并打开，这时候就会看到熟悉 Linux 系统！
+
+接下来就和 Linux 系统上的下载、运行步骤一样了。
+
+# 安装 CloudflareST
+因为 Termux 的 Linux 系统过于精简，因此还需要安装一下 Wget 下载工具。
+
+# 在  Termux 中输入以下命令，等待运行完毕...
+pkg install wget
+
+# 不用担心，wget 是安装在 Termux  Linux 虚拟机中的，卸载 Termux 时也会一起被卸载（包括 CloudflareST 等文件）。
+然后就可以开始下载 CloudflareST 了。
+
+Android 手机大部分是 ARM 架构，具体是 64 位还是 32 位，需要自己查或者都试试。
+其他版本号和文件名请前往 Releases 查看。
+
+# 下载 CloudflareST 压缩包（自行根据需求替换 URL 中版本号和文件名）
+# 考虑到国内直接从 Github 下载速度很慢，这里我把 github.com 替换为镜像站了
+# 下面这个是 ARM 64位的，对于 ARM 32位的，可以把文件名替换为 CloudflareST_linux_arm.tar.gz
+wget https://download.fastgit.org/XIU2/CloudflareSpeedTest/releases/download/v1.4.8/CloudflareST_linux_arm64.tar.gz
+
+# 解压（不需要删除旧文件，会直接覆盖，自行根据需求替换 文件名）
+tar -zxf CloudflareST_linux_arm64.tar.gz
+
+# 赋予执行权限
+chmod +x CloudflareST
+
+# 运行（以后再打开 Termux 直接运行这个命令就行了，可以根据需要自定义添加参数）
+./CloudflareST
+毕竟手机上打字不方便，所以我就精简了创建文件夹的步骤，大家有强迫症的可以在安装 CloudflareST 之前先执行：
+
+# 如果是第一次使用，则建议创建新文件夹（后续更新请跳过该步骤）
+mkdir CloudflareST
+
+# 进入文件夹（后续更新，只需要从这里重复下面的下载、解压命令即可）
+cd CloudflareST
+# Termux 技巧
+双指放大/缩小可以控制文字大小，默认文字太大不方便观看，建议缩小一些。
