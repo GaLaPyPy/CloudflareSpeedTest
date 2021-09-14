@@ -1,24 +1,25 @@
 # XIU2/CloudflareSpeedTest
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Go&color=00ADD8)](https://github.com/XIU2/CloudflareSpeedTest/blob/master/go.mod)
-[![Release Version](https://img.shields.io/github/v/release/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Release&color=1784ff)](https://github.com/XIU2/CloudflareSpeedTest/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=License&color=f38020)](https://github.com/XIU2/CloudflareSpeedTest/blob/master/LICENSE)
-[![GitHub Star](https://img.shields.io/github/stars/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Star&color=f38020)](https://github.com/XIU2/CloudflareSpeedTest/stargazers)
-[![GitHub Fork](https://img.shields.io/github/forks/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Fork&color=f38020)](https://github.com/XIU2/CloudflareSpeedTest/network/members)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Go&color=00ADD8&logo=go)](https://github.com/XIU2/CloudflareSpeedTest/)
+[![Release Version](https://img.shields.io/github/v/release/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Release&color=1784ff&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/releases/latest)
+[![GitHub license](https://img.shields.io/github/license/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=License&color=f38020&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/)
+[![GitHub Star](https://img.shields.io/github/stars/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Star&color=f38020&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/)
+[![GitHub Fork](https://img.shields.io/github/forks/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Fork&color=f38020&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/)
 
 [国外很多网站](https://github.com/XIU2/CloudflareSpeedTest/discussions/62)都在使用 Cloudflare CDN，但分配给中国访客的 IP 并不友好（高延迟/高丢包/速度慢等）。  
 虽然 Cloudflare 公开了所有 [IP 段](https://www.cloudflare.com/ips/) ，但想要在这么多 IP 中找到适合自己的，怕是要累死，所以就有了这个软件。  
 
-该软件可以**测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)**！觉得好用请**点个⭐鼓励一下下~**  
+**「自选 IP/优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)**！好用的话**点个⭐鼓励一下叭~**  
 
-> _我另一个开源项目： **[一个 \[油猴脚本\] 轻松解决「Github」文件下载速度慢的问题！](https://github.com/XIU2/UserScript)**_   
+> _分享我的其他开源项目：[**TrackersList.com** - 全网热门 BT Tracker 列表！有效提高 BT 下载速度~](https://github.com/XIU2/TrackersListCollection) <img src="https://img.shields.io/github/stars/XIU2/TrackersListCollection.svg?style=flat-square&label=Star&color=4285dd&logo=github" height="16px" />_   
+> _[一个 **\[油猴脚本\]** 轻松解决「Github」文件下载速度慢的问题！](https://github.com/XIU2/UserScript)(及十几个油猴脚本 <img src="https://img.shields.io/github/stars/XIU2/UserScript.svg?style=flat-square&label=Star&color=4285dd&logo=github" height="16px" />_   
 
 ****
 ## 快速使用
 
 ### 下载运行
 
-1. 下载编译好的可执行文件 [蓝奏云](https://xiu.lanzoux.com/b0742hkxe) / [Github](https://github.com/XIU2/CloudflareSpeedTest/releases) 并解压。  
+1. 下载编译好的可执行文件 [蓝奏云](https://pan.lanzoui.com/b0742hkxe) / [Github](https://github.com/XIU2/CloudflareSpeedTest/releases) 并解压。  
 2. 双击运行 `CloudflareST.exe`文件（Windows），等待测速完成...  
 
 <details>
@@ -36,7 +37,7 @@ mkdir CloudflareST
 cd CloudflareST
 
 # 下载 CloudflareST 压缩包（自行根据需求替换 URL 中版本号和文件名）
-wget -N https://github.com/XIU2/CloudflareSpeedTest/releases/download/v1.4.7/CloudflareST_linux_amd64.tar.gz
+wget -N https://github.com/XIU2/CloudflareSpeedTest/releases/download/v1.5.0/CloudflareST_linux_amd64.tar.gz
 
 # 解压（不需要删除旧文件，会直接覆盖，自行根据需求替换 文件名）
 tar -zxf CloudflareST_linux_amd64.tar.gz
@@ -122,15 +123,17 @@ https://github.com/XIU2/CloudflareSpeedTest
     -url https://cf.xiu2.xyz/Github/CloudflareSpeedTest.png
         下载测速地址；用来下载测速的 Cloudflare CDN 文件地址，如地址含有空格请加上引号；
     -tl 200
-        平均延迟上限；只输出低于指定平均延迟的 IP，可单独使用也可搭配下载速度下限；(默认 9999.00 ms)
+        平均延迟上限；只输出低于指定平均延迟的 IP，可与其他上限/下限搭配；(默认 9999 ms)
+    -tll 40
+        平均延迟下限；只输出高于指定平均延迟的 IP，可与其他上限/下限搭配，过滤被假蔷的 IP；(默认 0 ms)
     -sl 5
-        下载速度下限；只输出高于指定下载速度的 IP，凑够指定数量 [-dn] 才会停止测速；(默认 0.00 MB/s )
+        下载速度下限；只输出高于指定下载速度的 IP，凑够指定数量 [-dn] 才会停止测速；(默认 0.00 MB/s)
     -p 20
         显示结果数量；测速后直接显示指定数量的结果，为 0 时不显示结果直接退出；(默认 20 )
     -f ip.txt
         IP段数据文件；如路径含有空格请加上引号；支持其他 CDN IP段；(默认 ip.txt )
     -o result.csv
-        输出结果文件；如路径含有空格请加上引号；值为空格时不输出 [-o " "]；(默认 result.csv )
+        写入结果文件；如路径含有空格请加上引号；值为空时不写入文件 [-o ""]；(默认 result.csv )
     -dd
         禁用下载测速；禁用后测速结果会按延迟排序 (默认按下载速度排序)；(默认 启用 )
     -ipv6
@@ -153,10 +156,10 @@ Windows 要指定参数需要在 CMD 中运行，或者把参数添加到快捷�
 #### \# IPv4/IPv6
 
 ``` bash
-# 指定 IPv4 数据文件（-f 默认值就是 ip.txt，所以该参数可以省略）
+# 测速 IPv4 时，需要指定 IPv4 数据文件（-f 默认值就是 ip.txt，所以该参数可以省略）
 CloudflareST.exe -f ip.txt
 
-# 指定 IPv6 数据文件( ipv6.txt )，需要加上 -ipv6 参数
+# 测速 IPv6 时，需要指定 IPv6 数据文件( ipv6.txt )，需要加上 -ipv6 参数
 CloudflareST.exe -f ipv6.txt -ipv6
 ```
 ****
@@ -166,8 +169,8 @@ CloudflareST.exe -f ipv6.txt -ipv6
 # 指定 IPv4 数据文件，不显示结果直接退出，输出结果到文件（-p 值为 0）
 CloudflareST.exe -f 1.txt -p 0 -dd
 
-# 指定 IPv4 数据文件，不输出结果到文件，直接显示结果（-p 值为 10 条，-o 值为空格）
-CloudflareST.exe -f 2.txt -o " " -p 10 -dd
+# 指定 IPv4 数据文件，不输出结果到文件，直接显示结果（-p 值为 10 条，-o 值为空但引号不能少）
+CloudflareST.exe -f 2.txt -o "" -p 10 -dd
 
 # 指定 IPv4 数据文件 及 输出结果到文件（相对路径，即当前目录下，如含空格请加上引号）
 CloudflareST.exe -f 3.txt -o result.txt -dd
@@ -190,6 +193,14 @@ CloudflareST.exe -url https://cf.xiu2.xyz/Github/CloudflareSpeedTest.png
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
 
 ****
+
+- 指定 **[平均延迟下限]** 条件（用于过滤**被假蔷的 IP**，这类 IP 都被 TCP 劫持，因此延迟很低只有几十ms）
+
+``` bash
+# 平均延迟下限：40 ms （一般除了移动直连香港外，几乎不存在低于 100ms 的，自行测试适合的下限延迟）
+# 平均延迟下限和其他的上下限参数一样，都可以单独使用、互相搭配使用！
+CloudflareST.exe -tll 40
+```
 
 - 仅指定 **[平均延迟上限]** 条件
 
@@ -313,13 +324,6 @@ CloudflareST.exe -f 1.txt
 考虑到很多人获得最快 Cloudflare CDN IP 后，需要替换 Hosts 文件中的 IP。
 
 可以看这个 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues/42) 获取 **Windows/Linux 自动更新 Hosts 脚本**！
-
-****
-#### \# 自动更新域名解析记录
-
-如果你的域名托管在 Cloudflare，则可以通过 Cloudflare 官方提供的 API 来自动更新域名解析记录。  
-
-可以看这个 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues/40) 获取**手动教程**或 **Windows/Linux 自动更新脚本**！
 
 ****
 ## 问题反馈
